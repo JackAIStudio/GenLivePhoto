@@ -4,6 +4,20 @@
 
 本项目与 JackAICut 无关，不依赖 JackAICut 的源码或运行环境。
 
+[下载最新版本](https://github.com/JackAIStudio/GenLivePhoto/releases/latest) · [查看更新日志](CHANGELOG.md) · [参与贡献](CONTRIBUTING.md)
+
+## 下载与安装
+
+不需要编译源码：
+
+1. 在 [Releases](https://github.com/JackAIStudio/GenLivePhoto/releases/latest) 下载 `GenLivePhoto-*-macos-universal.zip`。
+2. 解压后，将 `GenLivePhoto.app` 拖入“应用程序”文件夹。
+3. 按下方说明安装 MakeLive，然后打开 App。
+
+发布包同时支持 Intel 和 Apple 芯片，最低需要 macOS 13。
+
+如果 macOS 首次打开时提示无法验证开发者，请在访达中按住 Control 点击 App，选择“打开”；也可以前往“系统设置 → 隐私与安全性”确认打开。发布包的签名与公证状态会在对应 Release 说明中标注。
+
 ## 功能
 
 - 支持 PNG、JPG、JPEG、HEIC、HEIF、TIFF、BMP、GIF、WebP 等常见封面图片
@@ -37,6 +51,12 @@
 
 ```bash
 ./scripts/setup-makelive.sh
+```
+
+只下载 App、不下载源码的用户，可以先按 [uv 官方说明](https://docs.astral.sh/uv/getting-started/installation/)安装 `uv`，再执行：
+
+```bash
+uv tool install makelive
 ```
 
 ## 开发运行
@@ -73,6 +93,18 @@ swift test
 dist/GenLivePhoto.app
 ```
 
+默认会构建同时支持 Intel 与 Apple 芯片的通用 App。只构建单一架构时可使用：
+
+```bash
+GENLIVEPHOTO_ARCHS="arm64" ./scripts/build-app.sh
+```
+
+生成可用于 GitHub Release 的压缩包和 SHA-256 校验文件：
+
+```bash
+./scripts/package-release.sh 1.0.0
+```
+
 ## 使用
 
 1. 选择动态视频和封面照片；两者可以按任意顺序选择，也可以直接拖入窗口。
@@ -82,3 +114,16 @@ dist/GenLivePhoto.app
 5. 点击“导入照片”，或将生成的 `.pvt` 隔空投送到 iPhone。
 
 为了减少封面切换到动态画面时的跳变，建议封面与视频使用相同的尺寸、比例和方向。
+
+## 隐私
+
+视频和照片都在本机处理，GenLivePhoto 不会上传媒体文件，也不包含分析或追踪服务。安装或首次运行外部依赖时，`uv`/`uvx` 可能访问网络下载 MakeLive。
+
+## 安全与贡献
+
+- 发现安全问题请阅读[安全政策](SECURITY.md)，不要在公开 Issue 中披露漏洞细节。
+- Bug、功能建议和代码贡献请参考[参与贡献](CONTRIBUTING.md)。
+
+## 许可证
+
+GenLivePhoto 使用 [MIT License](LICENSE) 开源。MakeLive 是独立安装的第三方工具，使用其自己的 MIT License。
