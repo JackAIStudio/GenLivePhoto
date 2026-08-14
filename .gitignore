@@ -1,0 +1,19 @@
+# macOS
+.DS_Store
+
+# Swift Package Manager
+/.build/
+/.swiftpm/
+
+# Local build and generated output
+/dist/
+*.pvt/
+
+# Local credentials and environment overrides
+.env
+.env.*
+!.env.example
+
+# Xcode user state
+xcuserdata/
+*.xcuserstate
