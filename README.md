@@ -27,13 +27,9 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 
 1. 打开[最新版下载页面](https://github.com/JackAIStudio/GenLivePhoto/releases/latest)。
 2. 下载名字中带有 `macos-universal.zip` 的文件。
-3. 解压后，把 `GenLivePhoto.app` 拖进“应用程序”文件夹。
+3. 解压后，把 `GenLivePhoto.app` 拖进“应用程序”文件夹，然后双击打开。
 
-第一次打开时，如果 macOS 弹出安全提示：
-
-1. 在访达中找到 `GenLivePhoto.app`。
-2. 按住 Control 点击它，选择“打开”。
-3. 再确认一次“打开”。
+发布包已经完成 Apple Developer ID 签名和 Apple 公证。
 
 ### 3. 制作实况照片
 
@@ -71,7 +67,7 @@ swift test
 生成 GitHub Release 安装包：
 
 ```bash
-./scripts/package-release.sh 1.0.0
+./scripts/package-release.sh 8.15.8
 ```
 
 更多内容：
